@@ -38,7 +38,7 @@ describe Merb::MailQueue::Processor do
     email.to.first.should == jobs.first.to
     email.from.first.should == jobs.first.from
     
-    email.body.first.should == jobs.first.body
+    email.text.should == jobs.first.text
   end  
   
   it "destroys processed jobs" do

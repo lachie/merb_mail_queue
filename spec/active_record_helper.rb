@@ -12,7 +12,8 @@ class MailQueueJobMigration < ActiveRecord::Migration
       t.string :to,         :string
       t.string :from,       :string
       t.string :subject,    :string
-      t.text   :body
+      t.text   :text
+      t.text   :html
       
       t.timestamps
     end
@@ -29,14 +30,14 @@ def create_mail_queue_jobs
     :to      => "mail@queue.plugins.merbivore.com",
     :from    => "activerecord@queue.plugins.merbivore.com",
     :subject => "Merb Mail queue plugin",
-    :body    => "This plugin makes email queueing simpler than before!"
+    :text    => "This plugin makes email queueing simpler than before!"
   )
   
   second = MailQueueJob.create!(
     :to      => "mail@queue.plugins.merbivore.com",
     :from    => "activerecord@queue.plugins.merbivore.com",
     :subject => "Merb Mail queue plugin, take 2",
-    :body    => "This plugin work with ActiveRecord"
+    :html    => "This plugin for <a href='http://merbivore.com'>Merb</a> work with ActiveRecord"
   )
   
   [first, second]

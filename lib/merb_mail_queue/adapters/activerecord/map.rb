@@ -17,9 +17,9 @@ module Merb
               find(:all, *args)
             end
             
-            def queue(from, to, subject, body)
+            def queue(from, to, subject, text, html)
               [to].flatten.each do |recepient|
-                create(:to => recepient, :from => from, :subject => subject, :body => body)
+                create(:to => recepient, :from => from, :subject => subject, :text => text, :html => html)
               end
             end
           end # ClassMethods

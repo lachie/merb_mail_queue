@@ -25,8 +25,12 @@ module Merb
         body             = _dispatch method
         if !@mail.html.blank? || !@mail.text.blank?
           body = @mail.html || @mail.text
-          Merb::MailQueue.mail_queue_job_model_class.queue(@mail.from, @mail.to.first, @mail.subject.first, body)
-          Merb.logger.info "Email queued: to #{@mail.to} about #{@mail.subject}"
+          
+          Merb::MailQueue.mail_queue_job_model_class.queue(
+            mail_params[:from], mail_params[:to], mail_params[:subject], @mail.text, @mail.html
+          )
+          
+          Merb.logger.info "Email queued: \n\tfrom #{mail_params[:from]} \n\tto #{mail_params[:to]} \n\tabout #{mail_params[:subject]}."
         else
           Merb.logger.info "#{method} was not sent because nothing was rendered for it"
         end        

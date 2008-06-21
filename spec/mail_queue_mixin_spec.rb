@@ -19,7 +19,7 @@ end
 
 class DelayedMailController < Merb::MailController
   def first
-    render_mail
+    render_mail :text => :first
   end
   
   def second
@@ -54,11 +54,11 @@ describe "A Merb Mail controller" do
   
   it "should render files in its directory by default" do
     queue :first
-    MailQueueJob.last.body.should == "First message."
+    MailQueueJob.last.text.should == "First message."
   end
   
   it "should render files in its directory without a mimetype extension by default" do
     call_action :does_queueing_of_second_email
-    MailQueueJob.last.body.should == "Second message."
+    MailQueueJob.last.html.should == "Second message."
   end
 end
