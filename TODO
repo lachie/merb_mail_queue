@@ -1,0 +1,10 @@
+TODO:
+
+* Better specs for multiple recipients.
+* Add DataMapper adapter.
+* Add Sequel adapter.
+* Extract Adapters load/registration API into a separate gem.
+* Better spec helpers organization.
+* Add generators for models, migrations.
+* Remove duplication with merb-mailer.
+* Simplify the plugin wherever possible.
